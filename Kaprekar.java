@@ -3,6 +3,7 @@ import java.util.Arrays;
 public class Kaprekar {
 
 	static int n;
+	private static final int KAPREKAN_NUMBER = 6174;
 
     public static void main(String[] args) {
         Kaprekar kaprekar = new Kaprekar();
@@ -25,7 +26,7 @@ public class Kaprekar {
 
     int kaprekanReps(int num) {
         int n = 0;
-        while (num != 6174) {
+        while (num != KAPREKAN_NUMBER) {
             num = diffBigSmall(ascendingOrder(convertToArray(num)), descendingOrder(convertToArray(num)));
             n++;
         }
@@ -33,7 +34,7 @@ public class Kaprekar {
     }
 
     int recursive(int num){
-    	if(num!=6174) {
+    	if(num!=KAPREKAN_NUMBER) {
     		n++;
     		return recursive(diffBigSmall(ascendingOrder(convertToArray(num)), descendingOrder(convertToArray(num))));
     	}
@@ -41,6 +42,7 @@ public class Kaprekar {
     }
 
     boolean isValidKaprekar(int num) {
+    	//NOT WORKING PROPERLY
         int digit = num % 10;
         while (num != 0) {
             int current_digit = num % 10;
