@@ -15,7 +15,7 @@ public class Kaprekar {
         System.out.println("Entra un numero de 4 digits");
         int num = input.nextInt();
    
-        if (isValidKaprekar(num)) {
+        if (!sameDigits(num)) {
             n=0;
 	        System.out.println("recursive method "+ recursive(num));
 	        System.out.println("kaprepan reps method: "+kaprekanReps(num));
@@ -41,18 +41,14 @@ public class Kaprekar {
     	else return n;
     }
 
-    boolean isValidKaprekar(int num) {
-    	//NOT WORKING PROPERLY
-        int digit = num % 10;
-        while (num != 0) {
-            int current_digit = num % 10;
-            num = num / 10;
-            if (current_digit != digit) {
-                return true;
-            }
-        }
-        return false;
-    }
+    boolean sameDigits(int num){
+    	String s = ((Integer)num).toString();
+	    int n = s.length();
+	    for (int i = 1; i < n; i++)
+	        if (s.charAt(i) != s.charAt(0))
+	            return false;
+	    return true;
+	    }
 
     int[] convertToArray(int num) {
         int[] nums = new int[4];
