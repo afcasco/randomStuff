@@ -18,12 +18,13 @@ public class Kaprekar {
         if (!sameDigits(num)) {
             n=0;
 	        System.out.println("recursive method "+ recursive(num));
-	        System.out.println("kaprepan reps method: "+kaprekanReps(num));
+	        System.out.println("kaprepar reps method: "+kaprekanReps(num));
         } else {
-            System.out.println("All digits are the same... can't kaprekan");
+            System.out.println("All digits are the same... can't kaprekar this");
         }
     }
 
+    // returns number of reps to reach kaprekar number
     int kaprekanReps(int num) {
         int n = 0;
         while (num != KAPREKAN_NUMBER) {
@@ -33,6 +34,7 @@ public class Kaprekar {
         return n;
     }
 
+    // same askaprekanReps but using recursion
     int recursive(int num){
     	if(num!=KAPREKAN_NUMBER) {
     		n++;
@@ -41,15 +43,18 @@ public class Kaprekar {
     	else return n;
     }
 
+    //check if all digits are the same
     boolean sameDigits(int num){
     	String s = ((Integer)num).toString();
-	    int n = s.length();
-	    for (int i = 1; i < n; i++)
-	        if (s.charAt(i) != s.charAt(0))
+	    for (int i = 1; i < s.length(); i++){
+	        if (s.charAt(i) != s.charAt(0)){
 	            return false;
+	        }
+	    }
 	    return true;
 	    }
 
+	// convert number to array of ints to use Arrays.sort()
     int[] convertToArray(int num) {
         int[] nums = new int[4];
         for (int i = 0; i < 4; i++) {
@@ -60,6 +65,7 @@ public class Kaprekar {
         return nums;
     }
 
+    // convert arra to int (already sorted in covertToArray)
     int ascendingOrder(int nums[]) {
 
         int num = 0;
@@ -71,6 +77,7 @@ public class Kaprekar {
         return num;
     }
 
+    // descending sort and convert to int
     int descendingOrder(int[] nums) {
         int reversed = 0;
         int factor = 1;
@@ -81,6 +88,7 @@ public class Kaprekar {
         return reversed;
     }
 
+    // substracts smaller number from bigges number
     int diffBigSmall(int x, int y) {
         return x > y ? x - y : y - x;
     }
