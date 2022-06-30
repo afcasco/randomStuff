@@ -14,18 +14,13 @@ public class Kaprekar {
         System.out.println("Entra un numero de 4 digits");
         int num = input.nextInt();
    
-        // if (isValidKaprekar(num)) {
-        //     int reps = kaprekanReps(num);
-        //     System.out.println("Reps to reach kaprekan: " + reps);
-        // } else {
-        //     System.out.println("All digits are the same... can't kaprekan");
-        // }
-        n=0;
-        System.out.println("recursive method "+ recursive(num));
-        System.out.println("kaprepan reps method: "+kaprekanReps(num));
-
-
-
+        if (isValidKaprekar(num)) {
+            n=0;
+	        System.out.println("recursive method "+ recursive(num));
+	        System.out.println("kaprepan reps method: "+kaprekanReps(num));
+        } else {
+            System.out.println("All digits are the same... can't kaprekan");
+        }
     }
 
     int kaprekanReps(int num) {
@@ -43,7 +38,6 @@ public class Kaprekar {
     		return recursive(diffBigSmall(ascendingOrder(convertToArray(num)), descendingOrder(convertToArray(num))));
     	}
     	else return n;
-    	
     }
 
     boolean isValidKaprekar(int num) {
@@ -76,7 +70,6 @@ public class Kaprekar {
             num = num + nums[i] * factor;
             factor = factor / 10;
         }
-
         return num;
     }
 
